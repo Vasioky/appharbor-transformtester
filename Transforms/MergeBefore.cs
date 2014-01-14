@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml;
-
-namespace AppHarbor.TransformTester.Transforms
+﻿namespace Transforms
 {
-	public class MergeBefore : Merge
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Xml;
+
+    public class MergeBefore : Merge
 	{
 		protected override void Apply()
 		{

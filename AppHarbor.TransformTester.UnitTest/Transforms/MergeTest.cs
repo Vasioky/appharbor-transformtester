@@ -1,5 +1,4 @@
-﻿using AppHarbor.TransformTester.Transforms;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Xunit;
@@ -7,7 +6,9 @@ using Xunit.Extensions;
 
 namespace AppHarbor.TransformTester.UnitTest.Transforms
 {
-	public class MergeTest
+    using global::Transforms;
+
+    public class MergeTest : TransformBaseTest
 	{
 		[Theory]
 		[InlineData("<foo></foo>", "<bar />", "<foo><bar /></foo>")]
@@ -39,26 +40,6 @@ namespace AppHarbor.TransformTester.UnitTest.Transforms
 			merge.Apply(targetDocument.DocumentElement, transformElement, arguments);
 
 			Assert.Equal(expectedXml, targetDocument.OuterXml);
-		}
-
-		private XmlDocument ArrangeTargetDocument(string xml)
-		{
-			var document = new XmlDocument();
-			document.LoadXml(xml);
-
-			return document;
-		}
-
-		private XmlElement ArrangeTransformElement(XmlDocument document, string xml)
-		{
-			using (var textReader = new StringReader(xml))
-			{
-				using (var xmlReader = new XmlTextReader(textReader))
-				{
-					var node = document.ReadNode(xmlReader);
-					return (XmlElement)node;
-				}
-			}
 		}
 	}
 }

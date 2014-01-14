@@ -120,7 +120,7 @@
   <data name="DefaultTransformation" xml:space="preserve">
     <value>&lt;?xml version="1.0"?&gt;
 &lt;configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform"&gt;
-  &lt;xdt:Import assembly="AppHarbor.TransformTester" namespace="AppHarbor.TransformTester.Transforms"/&gt;
+  &lt;xdt:Import assembly="Transforms" namespace="Transforms"/&gt;
   
   &lt;configSections xdt:Transform="MergeBefore(/configuration/*)" /&gt;
 
@@ -138,7 +138,10 @@
       &lt;customErrors mode="On" xdt:Transform="Replace"&gt;
       &lt;/customErrors&gt;
   &lt;/system.web&gt;
-
+&lt;system.serviceModel&gt;
+    &lt;client xdt:Transform="EndpointTransform(localhost)"&gt;
+    &lt;/client&gt;
+  &lt;/system.serviceModel&gt;
 &lt;/configuration&gt;</value>
   </data>
   <data name="DefaultWebConfig" xml:space="preserve">
@@ -149,7 +152,12 @@
   &lt;/connectionStrings&gt;
   &lt;system.web&gt;
     &lt;customErrors mode="Off"/&gt;
-  &lt;/system.web&gt;
+  &lt;/system.web&gt; &lt;system.serviceModel&gt;
+    &lt;client&gt;
+        &lt;endpoint address="http://localhost/PQS.ServiceHost.Rest/MembershipService" behaviorConfiguration="PQSServiceBehavior" binding="webHttpBinding" bindingConfiguration="PQSBinding" contract="PQS.Services.Security.Interface.IMembershipService" /&gt;
+        &lt;endpoint address="http://localhost/PQS.ServiceHost.Rest/LocalizationService" behaviorConfiguration="PQSServiceBehavior" binding="webHttpBinding" bindingConfiguration="PQSBinding" contract="PQS.Services.Customization.Interface.ILocalizationService" /&gt;
+    &lt;/client&gt;
+  &lt;/system.serviceModel&gt;
 &lt;/configuration&gt;</value>
   </data>
 </root>

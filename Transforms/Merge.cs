@@ -1,10 +1,10 @@
-﻿using Microsoft.Web.XmlTransform;
-using System.Linq;
-using System.Xml;
-
-namespace AppHarbor.TransformTester.Transforms
+﻿namespace Transforms
 {
-	public class Merge : Transform
+    using System.Linq;
+    using System.Xml;
+    using Microsoft.Web.XmlTransform;
+
+    public class Merge : Transform
 	{
 		public Merge()
 			: base(TransformFlags.UseParentAsTargetNode)

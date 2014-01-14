@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Demo" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask TaskName="TransformXml"
+           AssemblyFile="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll"/>
+
+  <PropertyGroup>
+    <TransformDest>web.tranzed.config</TransformDest>
+  </PropertyGroup>
+  
+  <Target Name="Demo">
+    <Delete Files="$(TransformDest)" />
+    <TransformXml Source="web.config"
+                  Transform="web.release.config"
+                  Destination="$(TransformDest)" />                  
+  </Target>
+  
+</Project>

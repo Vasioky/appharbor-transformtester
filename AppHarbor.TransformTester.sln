@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHarbor.TransformTester",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHarbor.TransformTester.UnitTest", "AppHarbor.TransformTester.UnitTest\AppHarbor.TransformTester.UnitTest.csproj", "{B9C51963-207D-477E-82DA-949637D71A2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transforms", "Transforms\Transforms.csproj", "{A3F6196D-00DB-4AAB-92BE-B99C16D32A16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{B9C51963-207D-477E-82DA-949637D71A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9C51963-207D-477E-82DA-949637D71A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9C51963-207D-477E-82DA-949637D71A2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3F6196D-00DB-4AAB-92BE-B99C16D32A16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3F6196D-00DB-4AAB-92BE-B99C16D32A16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3F6196D-00DB-4AAB-92BE-B99C16D32A16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3F6196D-00DB-4AAB-92BE-B99C16D32A16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
