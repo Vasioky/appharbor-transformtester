@@ -53,7 +53,7 @@
                 }
                 var port = Arguments[2].Trim();
                 int portOut;
-                return _port =  string.IsNullOrEmpty(port)? 80 : int.TryParse(port, out portOut) ? portOut : 80;
+                return _port =  string.IsNullOrEmpty(port)? 0 : int.TryParse(port, out portOut) ? portOut : 0;
             }
             internal set { _port = value; }
         }
@@ -67,7 +67,8 @@
                 var uri = endpointNode.Attributes["address"].Value;
 
                 var endpointUrl = new UriBuilder(uri) { Host = Host };
-                if (Port!=0)
+
+                if (Port != 0)
                 {
                     endpointUrl.Port = Port;
                 }
@@ -76,7 +77,7 @@
                     endpointUrl.Scheme = Scheme;
                 }
                 
-                endpointNode.Attributes["address"].Value = new Uri(endpointUrl.ToString()).ToString();
+                endpointNode.Attributes["address"].Value = endpointUrl.Uri.ToString();
             }
         }
     }
