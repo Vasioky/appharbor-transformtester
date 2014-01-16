@@ -154,8 +154,8 @@
     &lt;customErrors mode="Off"/&gt;
   &lt;/system.web&gt; &lt;system.serviceModel&gt;
     &lt;client&gt;
-        &lt;endpoint address="http://localhost/PQS.ServiceHost.Rest/MembershipService" behaviorConfiguration="PQSServiceBehavior" binding="webHttpBinding" bindingConfiguration="PQSBinding" contract="PQS.Services.Security.Interface.IMembershipService" /&gt;
-        &lt;endpoint address="http://localhost/PQS.ServiceHost.Rest/LocalizationService" behaviorConfiguration="PQSServiceBehavior" binding="webHttpBinding" bindingConfiguration="PQSBinding" contract="PQS.Services.Customization.Interface.ILocalizationService" /&gt;
+        &lt;endpoint address="http://localhost/ServiceHost.Rest/MembershipService" behaviorConfiguration="ServiceBehavior" binding="webHttpBinding" bindingConfiguration="Binding" contract="Services.Security.Interface.IMembershipService" /&gt;
+        &lt;endpoint address="http://localhost/ServiceHost.Rest/LocalizationService" behaviorConfiguration="ServiceBehavior" binding="webHttpBinding" bindingConfiguration="Binding" contract="Services.Customization.Interface.ILocalizationService" /&gt;
     &lt;/client&gt;
   &lt;/system.serviceModel&gt;
 &lt;/configuration&gt;</value>

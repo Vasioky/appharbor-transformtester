@@ -95,8 +95,8 @@ namespace AppHarbor.TransformTester {
         ///    &lt;customErrors mode=&quot;Off&quot;/&gt;
         ///  &lt;/system.web&gt; &lt;system.serviceModel&gt;
         ///    &lt;client&gt;
-        ///        &lt;endpoint address=&quot;http://localhost/PQS.ServiceHost.Rest/MembershipService&quot; behaviorConfiguration=&quot;PQSServiceBehavior&quot; binding=&quot;webHttpBinding&quot; bindingConfiguration=&quot;PQSBinding&quot; contract=&quot;PQS.Services.Security.Interface.IMembershipService&quot; /&gt;
-        ///        &lt;endpoint addres [rest of string was truncated]&quot;;.
+        ///        &lt;endpoint address=&quot;http://localhost/ServiceHost.Rest/MembershipService&quot; behaviorConfiguration=&quot;ServiceBehavior&quot; binding=&quot;webHttpBinding&quot; bindingConfiguration=&quot;Binding&quot; contract=&quot;Services.Security.Interface.IMembershipService&quot; /&gt;
+        ///        &lt;endpoint address=&quot;http://loca [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string DefaultWebConfig {
             get {

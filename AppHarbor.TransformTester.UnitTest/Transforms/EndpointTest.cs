@@ -8,14 +8,14 @@
     {
         [Theory]
         [InlineData(
-         @"<client><endpoint address=""http://localhost/PQS.ServiceHost.Rest/MembershipService"" behaviorConfiguration=""PQSServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""PQSBinding"" contract=""PQS.Services.Security.Interface.IMembershipService"" /></client>",
+         @"<client><endpoint address=""http://localhost/ServiceHost.Rest/MembershipService"" behaviorConfiguration=""ServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""Binding"" contract=""Services.Security.Interface.IMembershipService"" /></client>",
          @"<client></client>", 
-         @"<client><endpoint address=""http://10.10.10.10/PQS.ServiceHost.Rest/MembershipService"" behaviorConfiguration=""PQSServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""PQSBinding"" contract=""PQS.Services.Security.Interface.IMembershipService"" /></client>",
+         @"<client><endpoint address=""http://10.10.10.10/ServiceHost.Rest/MembershipService"" behaviorConfiguration=""ServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""Binding"" contract=""Services.Security.Interface.IMembershipService"" /></client>",
          "http", "10.10.10.10", 80)]
         [InlineData(
-         @"<client><endpoint address=""http://localhost/PQS.ServiceHost.Rest/MembershipService"" behaviorConfiguration=""PQSServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""PQSBinding"" contract=""PQS.Services.Security.Interface.IMembershipService"" /></client>",
+         @"<client><endpoint address=""http://localhost/ServiceHost.Rest/MembershipService"" behaviorConfiguration=""ServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""Binding"" contract=""Services.Security.Interface.IMembershipService"" /></client>",
          @"<client></client>", 
-         @"<client><endpoint address=""https://10.10.10.10:8080/PQS.ServiceHost.Rest/MembershipService"" behaviorConfiguration=""PQSServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""PQSBinding"" contract=""PQS.Services.Security.Interface.IMembershipService"" /></client>",
+         @"<client><endpoint address=""https://10.10.10.10:8080/ServiceHost.Rest/MembershipService"" behaviorConfiguration=""ServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""Binding"" contract=""Services.Security.Interface.IMembershipService"" /></client>",
          "https", "10.10.10.10", 8080)]
         public void Apply_ShouldMerge(string targetXml, string transformXml, string expectedXml,
             string scheme, string host, int port)
