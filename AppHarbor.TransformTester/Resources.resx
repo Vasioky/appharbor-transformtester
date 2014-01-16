@@ -139,7 +139,7 @@
       &lt;/customErrors&gt;
   &lt;/system.web&gt;
 &lt;system.serviceModel&gt;
-    &lt;client xdt:Transform="EndpointTransform(localhost)"&gt;
+    &lt;client xdt:Transform="EndpointTransform(,localhost,)"&gt;
     &lt;/client&gt;
   &lt;/system.serviceModel&gt;
 &lt;/configuration&gt;</value>

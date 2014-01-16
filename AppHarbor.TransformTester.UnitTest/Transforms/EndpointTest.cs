@@ -10,16 +10,25 @@
         [InlineData(
          @"<client><endpoint address=""http://localhost/PQS.ServiceHost.Rest/MembershipService"" behaviorConfiguration=""PQSServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""PQSBinding"" contract=""PQS.Services.Security.Interface.IMembershipService"" /></client>",
          @"<client></client>", 
-         @"<client><endpoint address=""http://10.10.10.10/PQS.ServiceHost.Rest/MembershipService"" behaviorConfiguration=""PQSServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""PQSBinding"" contract=""PQS.Services.Security.Interface.IMembershipService"" /></client>")]
-        //[InlineData("<foo></foo>", "<bar></bar>", "<foo><bar></bar></foo>")]
-        //[InlineData("<foo><bar></bar></foo>", "<bar></bar>", "<foo><bar></bar></foo>")]
-        //[InlineData("<foo><baz></baz></foo>", "<bar></bar>", "<foo><baz></baz><bar></bar></foo>")]
-        public void Apply_ShouldMerge(string targetXml, string transformXml, string expectedXml)
+         @"<client><endpoint address=""http://10.10.10.10/PQS.ServiceHost.Rest/MembershipService"" behaviorConfiguration=""PQSServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""PQSBinding"" contract=""PQS.Services.Security.Interface.IMembershipService"" /></client>",
+         "http", "10.10.10.10", 80)]
+        [InlineData(
+         @"<client><endpoint address=""http://localhost/PQS.ServiceHost.Rest/MembershipService"" behaviorConfiguration=""PQSServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""PQSBinding"" contract=""PQS.Services.Security.Interface.IMembershipService"" /></client>",
+         @"<client></client>", 
+         @"<client><endpoint address=""https://10.10.10.10:8080/PQS.ServiceHost.Rest/MembershipService"" behaviorConfiguration=""PQSServiceBehavior"" binding=""webHttpBinding"" bindingConfiguration=""PQSBinding"" contract=""PQS.Services.Security.Interface.IMembershipService"" /></client>",
+         "https", "10.10.10.10", 8080)]
+        public void Apply_ShouldMerge(string targetXml, string transformXml, string expectedXml,
+            string scheme, string host, int port)
         {
             var targetDocument = ArrangeTargetDocument(targetXml);
             var transformElement = ArrangeTransformElement(targetDocument, transformXml);
 
-            var endpointTransform = new EndpointTransform { Endpoint = "10.10.10.10" };
+            var endpointTransform = new EndpointTransform
+            {
+                Scheme = scheme,
+                Host = host, 
+                Port = port
+            };
 
             endpointTransform.Apply(targetDocument.DocumentElement, transformElement);
 

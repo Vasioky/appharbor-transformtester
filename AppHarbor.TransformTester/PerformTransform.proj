@@ -1,17 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Demo" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio\v11.0\Web\Microsoft.Web.XmlTransform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
   <UsingTask TaskName="TransformXml"
-           AssemblyFile="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll"/>
-
+           AssemblyFile="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v11.0\Web\Microsoft.Web.Publishing.Tasks.dll"/>
   <PropertyGroup>
-    <TransformDest>web.tranzed.config</TransformDest>
+    <TransformDest>web.result.config</TransformDest>
+    <TransformSource>Web.dev.config</TransformSource>
+    <GenerateResourceNeverLockTypeAssemblies>true</GenerateResourceNeverLockTypeAssemblies>
+    <AddAdditionalExplicitAssemblyReferences>true</AddAdditionalExplicitAssemblyReferences>
   </PropertyGroup>
-  
   <Target Name="Demo">
     <Delete Files="$(TransformDest)" />
     <TransformXml Source="web.config"
-                  Transform="web.release.config"
+                  Transform="$(TransformSource)"
                   Destination="$(TransformDest)" />                  
   </Target>
-  
 </Project>
