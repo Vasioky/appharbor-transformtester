@@ -1,11 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Demo" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
+  <!--<ItemGroup>
     <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio\v11.0\Web\Microsoft.Web.XmlTransform.dll</HintPath>
+    </Reference> 
+    <Reference Include="Transforms, Version=1.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Programming\GitHub\appharbor-transformtester\Transforms\bin\Release\Transforms.dll</HintPath>
     </Reference>
-  </ItemGroup>
+  </ItemGroup>-->
+  <UsingTask
+   TaskName="AssemblyResolve"
+   TaskFactory="CodeTaskFactory"
+   AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+    <ParameterGroup />
+    <Task>
+      <Using Namespace="System"/>
+      <Using Namespace="System.IO"/>
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+          // Display "Hello, world!"
+          //Log.LogError("Hello, world!");
+                AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
+          {
+                 Assembly ayResult = null;
+              string sShortAssemblyName = args.Name.Split(',')[0];
+              Assembly[] ayAssemblies = AppDomain.CurrentDomain.GetAssemblies();
+              foreach (Assembly ayAssembly in ayAssemblies)
+              {
+                  if (sShortAssemblyName == ayAssembly.FullName.Split(',')[0])
+                  {
+                      ayResult = ayAssembly;
+                      break;
+                  }
+              }
+              return ayResult;
+          };
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
   <UsingTask TaskName="TransformXml"
            AssemblyFile="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v11.0\Web\Microsoft.Web.Publishing.Tasks.dll"/>
   <PropertyGroup>
@@ -15,6 +50,7 @@
     <AddAdditionalExplicitAssemblyReferences>true</AddAdditionalExplicitAssemblyReferences>
   </PropertyGroup>
   <Target Name="Demo">
+    <AssemblyResolve/>
     <Delete Files="$(TransformDest)" />
     <TransformXml Source="web.config"
                   Transform="$(TransformSource)"
